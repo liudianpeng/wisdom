@@ -21,8 +21,13 @@ Route::get('/meun', 'Controller@meunModel');
 Route::get('/getList', 'Controller@getList');
 
 /**
- * 此人组下的路由为后端路由
+ * 此分组下的路由为后端路由
  */
 Route::group(['middleware' => ['web'], 'prefix' => 'admin', 'namespace' => 'Backend'], function (){
-
+    /**
+     * 系统管理
+     */
+    Route::get('/meun', 'MeunController@index')->name('backendMeun');
+    Route::get('/getMeun', 'MeunControler@getList')->name('getMeun');
+    Route::match(['get', 'post'], '/createMeun', 'MeunController@create')->name('createMeun');
 });

@@ -90,7 +90,7 @@
                                     </div>
                                 </div>
                                 <div class="col-md-1 col-sm-1">
-                                    <a href="/admin/roleModify" class="btn btn-info"><i class="fa fa-plus"></i> 新增</a>
+                                    <a data-toggle="modal" data-target="#exampleModal" class="btn btn-info"><i class="fa fa-plus"></i> 新增</a>
                                 </div>
                             </form>
                             <div class="clearfix"></div>
@@ -165,6 +165,56 @@
     </div>
 @endsection
 
+@section('modal')
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title" id="exampleModalLabel">新增菜单</h4>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group">
+                            <label for="parent_id" class="control-label">顶级菜单：</label>
+                            <select class="form-control" id="parent_id">
+                                <option value="0">顶级菜单</option>
+                                <option value="1">系统管理</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="model_name" class="control-label">模块名称：</label>
+                            <input class="form-control" id="model_name" type="text"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="rule_route" class="control-label">规则路由：</label>
+                            <input class="form-control" id="rule_route" type="text"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="icon" class="control-label">图标：</label>
+                            <input class="form-control" id="icon" type="text"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="sorting" class="control-label">排序：</label>
+                            <input class="form-control" id="sorting" type="number" min="0"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="status" class="control-label">状态：</label>
+                            <input class="flat" type="radio" name="status" value="0"> 启用
+                            <input class="flat" type="radio" name="status" value="1"> 禁用
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary"> 确 认 </button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal"> 关 闭     </button>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+
 @section('admin-js')
     <!-- bootstrap-daterangepicker -->
     <script src="/backend_admin/vendors/bootstrap-daterangepicker/moment-zh-CN.js"></script>
@@ -176,6 +226,14 @@
     <script type="text/javascript">
         $(document).ready(function () {
             vue.dataRequset();
+        });
+
+        $('#exampleModal').on('show.bs.modal', function (event) {
+            /*var button = $(event.relatedTarget);
+            var recipient = button.data('whatever');
+            var modal = $(this);
+            modal.find('.modal-title').text('New message to ' + recipient);
+            modal.find('.modal-body input').val(recipient);*/
         });
 
         Vue.prototype.$axios = axios;   //将 axios 改写为 Vue 的原型属性

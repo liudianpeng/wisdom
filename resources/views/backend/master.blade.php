@@ -110,7 +110,7 @@
                                     <li><a href="#">人员积分</a></li>
                                     <li><a href="#">积分明细</a></li>
                                     <li><a href="#">数据统计</a></li>
-                                    <li><a href="{{ url('/meun') }}">菜单管理</a></li>
+                                    <li><a href="{{ route('backendMeun') }}">菜单管理</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -162,6 +162,8 @@
         <!-- /footer content -->
     </div>
 </div>
+
+@yield('modal')
 
 <!-- jQuery -->
 <script src="/backend_admin/vendors/jquery/dist/jquery.min.js"></script>

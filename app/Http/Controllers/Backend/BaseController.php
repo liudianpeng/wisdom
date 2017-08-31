@@ -6,11 +6,14 @@
  * Time: 上午10:29
  */
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Backend;
 
 use Illuminate\Routing\Controller;
 
 class BaseController extends Controller
 {
+    public function __construct()
+    {
 
+    }
 }
